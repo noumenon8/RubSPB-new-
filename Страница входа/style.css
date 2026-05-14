@@ -355,7 +355,11 @@ button {
   }
 
   .burger-button {
-    display: inline-flex;
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none !important;
   }
 
   .auth-layout,
