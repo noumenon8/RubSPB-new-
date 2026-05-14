@@ -1347,6 +1347,11 @@ body {
     line-height: 34px;
   }
 
+  #events-section {
+    display: grid;
+    gap: 14px;
+  }
+
   .image-37,
   .image-35 {
     margin-top: 18px;
@@ -1355,16 +1360,19 @@ body {
   }
 
   .month-button {
-    display: inline-flex;
-    width: auto;
+    display: flex;
+    width: 100%;
     margin-top: 16px;
-    margin-right: 12px;
+    margin-right: 0;
     font-size: 22px;
     line-height: 28px;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .event-details {
     margin-top: 22px;
+    width: 100%;
   }
 
   .event-title {
@@ -1641,6 +1649,8 @@ body {
     margin-right: 0;
     font-size: 18px;
     line-height: 24px;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .event-title {
