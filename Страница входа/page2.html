@@ -14,12 +14,6 @@
       <a class="brand brand-header" href="../Главная страница/page1.html" aria-label="На главную">
         <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
       </a>
-
-      <button class="burger-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
-        <img class="burger-icon" src="icon-burger0.svg" alt="">
-      </button>
-
-      <div class="mobile-menu" id="mobile-menu" hidden></div>
     </header>
 
     <main class="auth-layout">
@@ -83,8 +77,6 @@
   </div>
 
   <script>
-    const burgerButton = document.querySelector('.burger-button');
-    const mobileMenu = document.getElementById('mobile-menu');
     const modeSwitch = document.getElementById('mode-switch');
     const authTitle = document.getElementById('auth-title');
     const submitButton = document.getElementById('submit-button');
@@ -97,12 +89,6 @@
 
     let isRegisterMode = false;
 
-    function setMobileMenuState(isOpen) {
-      burgerButton.setAttribute('aria-expanded', String(isOpen));
-      mobileMenu.hidden = !isOpen;
-      mobileMenu.classList.toggle('is-open', isOpen);
-    }
-
     function syncMode() {
       authTitle.textContent = isRegisterMode ? 'Регистрация' : 'Войти';
       submitButton.textContent = isRegisterMode ? 'Создать аккаунт' : 'Вход';
@@ -114,11 +100,6 @@
     modeSwitch.addEventListener('click', () => {
       isRegisterMode = !isRegisterMode;
       syncMode();
-    });
-
-    burgerButton.addEventListener('click', () => {
-      const isOpen = burgerButton.getAttribute('aria-expanded') === 'true';
-      setMobileMenuState(!isOpen);
     });
 
     passwordToggle.addEventListener('click', () => {
