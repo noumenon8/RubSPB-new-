@@ -169,6 +169,25 @@
       burgerButton.setAttribute('aria-expanded', String(isOpen));
       mobileMenu.hidden = !isOpen;
       mobileMenu.classList.toggle('is-open', isOpen);
+      mobileMenu.classList.toggle('is-floating', isOpen);
+      if (isOpen) {
+        updateMobileMenuPosition();
+      }
+    }
+
+    function updateMobileMenuPosition() {
+      if (mobileMenu.hidden) {
+        return;
+      }
+
+      const burgerRect = burgerButton.getBoundingClientRect();
+      const computedMenuWidth = parseFloat(window.getComputedStyle(mobileMenu).width) || 240;
+      const menuWidth = Math.min(computedMenuWidth, window.innerWidth - 24);
+      const left = Math.max(12, Math.min(window.innerWidth - menuWidth - 12, burgerRect.right - menuWidth));
+      const top = burgerRect.bottom + 14;
+
+      mobileMenu.style.setProperty('--menu-left', `${left}px`);
+      mobileMenu.style.setProperty('--menu-top', `${top}px`);
     }
 
     burgerButton.addEventListener('click', () => {
@@ -185,6 +204,8 @@
         setMobileMenuState(false);
       }
     });
+
+    window.addEventListener('resize', updateMobileMenuPosition);
 
     monthButtons.forEach((button) => {
       button.addEventListener('click', () => {
