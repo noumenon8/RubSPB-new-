@@ -147,6 +147,7 @@ body {
   position: absolute;
   left: 362.26px;
   top: 1221px;
+  display: none;
 }
 .rectangle-12 {
   background: #dde4ed;
@@ -159,6 +160,7 @@ body {
   position: absolute;
   left: 362.26px;
   top: 1267px;
+  display: none;
 }
 .image-37 {
   border-radius: 12px;
@@ -202,6 +204,7 @@ body {
   position: absolute;
   left: 1022.36px;
   top: 1221px;
+  display: none;
 }
 .rectangle-122 {
   background: #dde4ed;
@@ -211,6 +214,7 @@ body {
   position: absolute;
   left: 1022.36px;
   top: 1267px;
+  display: none;
 }
 .div3 {
   color: #ffffff;
