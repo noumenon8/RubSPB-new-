@@ -349,7 +349,18 @@ button {
 
 .empty-state {
   margin-top: 22px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #dde4ed;
+}
+
+.results-state {
+  margin: 22px 0 0;
+  color: #868b95;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .site-footer {
@@ -434,6 +445,14 @@ button {
 
 .modal-action {
   margin-top: 20px;
+}
+
+.modal-secondary-action {
+  display: inline-flex;
+  margin-top: 14px;
+  color: #3b4038;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .filter-chip:hover,
@@ -544,7 +563,8 @@ button {
   .route-copy,
   .route-meta,
   .modal-description,
-  .modal-meta {
+  .modal-meta,
+  .empty-state {
     font-size: 15px;
     line-height: 22px;
   }

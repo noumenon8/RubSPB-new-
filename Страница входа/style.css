@@ -204,6 +204,10 @@ button {
   display: block;
 }
 
+.field[hidden] {
+  display: none !important;
+}
+
 .field + .field,
 .forgot-link,
 .submit-button,
@@ -439,8 +443,8 @@ button {
   }
 
   .auth-layout {
-    gap: 16px;
-    margin-top: 24px;
+    gap: 12px;
+    margin-top: 18px;
   }
 
   .art-panel {
@@ -448,8 +452,8 @@ button {
   }
 
   .art-image {
-    width: min(100%, 300px);
-    max-height: 360px;
+    width: min(100%, 240px);
+    max-height: 280px;
   }
 
   .auth-card,
@@ -459,8 +463,8 @@ button {
   }
 
   .auth-card {
-    padding-top: 52px;
-    padding-bottom: 28px;
+    padding-top: 40px;
+    padding-bottom: 24px;
   }
 
   .mode-link {

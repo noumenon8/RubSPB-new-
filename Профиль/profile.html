@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Главная страница/vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>RunSPB - Профиль</title>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand brand-header" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <div class="header-actions">
+        <a class="header-link" href="../Маршрут/index.html">Маршруты</a>
+        <button class="header-link header-link-button" id="logout-button" type="button">Выйти</button>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="profile-hero">
+        <div class="profile-card">
+          <p class="profile-kicker">Личный кабинет</p>
+          <h1 class="profile-title" id="profile-name">Профиль RunSPB</h1>
+          <p class="profile-copy" id="profile-email">Добавь аккаунт, чтобы сохранять любимые маршруты и возвращаться к ним позже.</p>
+
+          <div class="profile-meta">
+            <div class="meta-card">
+              <span class="meta-label">Создан</span>
+              <span class="meta-value" id="profile-created-at">Пока нет данных</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Последний вход</span>
+              <span class="meta-value" id="profile-last-login">Пока нет данных</span>
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <a class="primary-action" href="../Маршрут/index.html">Подобрать маршрут</a>
+            <a class="secondary-action" href="../Страница входа/page2.html">Изменить профиль</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="saved-routes-section" aria-labelledby="saved-routes-title">
+        <div class="section-head">
+          <h2 class="section-title" id="saved-routes-title">Сохранённые маршруты</h2>
+          <p class="section-copy">Маршруты, которые ты добавил в профиль, будут появляться здесь.</p>
+        </div>
+
+        <div class="saved-routes-grid" id="saved-routes-grid"></div>
+        <p class="empty-state" id="saved-routes-empty" hidden>Пока ничего не сохранено. Открой маршруты и добавь первый забег в профиль.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <div class="footer-social">
+        <p class="footer-title">Мы в соц сетях</p>
+        <div class="social-icons">
+          <a class="social-link" href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <img src="../Страница входа/_81-e-9125-dfe-9-fe-6161-ba-1-aa-96-c-4876288-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="VK">
+            <img src="../Страница входа/f-74-dcd-9139-ebf-8-c-14-daf-235-cdf-026-c-7-c-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="../Страница входа/image-10.png" alt="">
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const PROFILE_STORAGE_KEY = 'runspb-user-profile';
+    const profileName = document.getElementById('profile-name');
+    const profileEmail = document.getElementById('profile-email');
+    const profileCreatedAt = document.getElementById('profile-created-at');
+    const profileLastLogin = document.getElementById('profile-last-login');
+    const savedRoutesGrid = document.getElementById('saved-routes-grid');
+    const savedRoutesEmpty = document.getElementById('saved-routes-empty');
+    const logoutButton = document.getElementById('logout-button');
+
+    function readProfile() {
+      try {
+        const rawProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+        return rawProfile ? JSON.parse(rawProfile) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function formatDate(value) {
+      if (!value) {
+        return 'Пока нет данных';
+      }
+
+      return new Intl.DateTimeFormat('ru-RU', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      }).format(new Date(value));
+    }
+
+    function renderSavedRoutes(routes) {
+      savedRoutesGrid.innerHTML = '';
+
+      if (!routes.length) {
+        savedRoutesEmpty.hidden = false;
+        return;
+      }
+
+      savedRoutesEmpty.hidden = true;
+
+      routes.forEach((route) => {
+        const card = document.createElement('article');
+        card.className = 'saved-route-card';
+        card.innerHTML = `
+          <h3 class="saved-route-title">${route.name}</h3>
+          <p class="saved-route-copy">Метро: ${route.metro}. Старт: ${route.location}.</p>
+          <ul class="saved-route-meta">
+            <li>Дистанция: ${route.distance} км</li>
+            <li>Сложность: ${route.level}</li>
+          </ul>
+        `;
+        savedRoutesGrid.appendChild(card);
+      });
+    }
+
+    function renderProfile() {
+      const profile = readProfile();
+      if (!profile) {
+        window.location.href = '../Страница входа/page2.html';
+        return;
+      }
+
+      profileName.textContent = profile.displayName || 'Профиль RunSPB';
+      profileEmail.textContent = profile.email || 'Без e-mail';
+      profileCreatedAt.textContent = formatDate(profile.createdAt);
+      profileLastLogin.textContent = formatDate(profile.lastLoginAt);
+      renderSavedRoutes(Array.isArray(profile.savedRoutes) ? profile.savedRoutes : []);
+    }
+
+    logoutButton.addEventListener('click', () => {
+      localStorage.removeItem(PROFILE_STORAGE_KEY);
+      window.location.href = '../Страница входа/page2.html';
+    });
+
+    renderProfile();
+  </script>
+</body>
+</html>

@@ -27,6 +27,11 @@
         <h1 class="auth-title" id="auth-title">Войти</h1>
 
         <form class="auth-form" id="auth-form">
+          <label class="field" id="name-field" hidden>
+            <span class="field-label">Имя</span>
+            <input id="name-input" type="text" name="name" placeholder="Например: Арсений">
+          </label>
+
           <label class="field">
             <span class="field-label">E-mail / Номер телефона</span>
             <input id="email-input" type="text" name="email" placeholder="runner@example.com" required>
@@ -77,6 +82,7 @@
   </div>
 
   <script>
+    const PROFILE_STORAGE_KEY = 'runspb-user-profile';
     const modeSwitch = document.getElementById('mode-switch');
     const authTitle = document.getElementById('auth-title');
     const submitButton = document.getElementById('submit-button');
@@ -86,14 +92,48 @@
     const passwordToggle = document.querySelector('.password-toggle');
     const forgotButton = document.getElementById('forgot-button');
     const emailInput = document.getElementById('email-input');
+    const nameField = document.getElementById('name-field');
+    const nameInput = document.getElementById('name-input');
 
     let isRegisterMode = false;
+
+    function readProfile() {
+      try {
+        const rawProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+        return rawProfile ? JSON.parse(rawProfile) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function saveProfile(profile) {
+      localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+    }
+
+    function resolveDisplayName() {
+      const manualName = nameInput.value.trim();
+      if (manualName) {
+        return manualName;
+      }
+
+      const emailValue = emailInput.value.trim();
+      if (!emailValue) {
+        return 'Runner';
+      }
+
+      return emailValue.split('@')[0] || emailValue;
+    }
 
     function syncMode() {
       authTitle.textContent = isRegisterMode ? 'Регистрация' : 'Войти';
       submitButton.textContent = isRegisterMode ? 'Создать аккаунт' : 'Вход';
       modeSwitch.textContent = isRegisterMode ? 'Уже есть аккаунт?' : 'Создать аккаунт';
       forgotButton.hidden = isRegisterMode;
+      nameField.hidden = !isRegisterMode;
+      nameInput.required = isRegisterMode;
+      if (!isRegisterMode) {
+        nameInput.value = '';
+      }
       statusMessage.textContent = '';
     }
 
@@ -123,19 +163,41 @@
         return;
       }
 
-      statusMessage.textContent = isRegisterMode
-        ? 'Аккаунт создан. Перенаправляем к маршрутам...'
-        : 'Вход выполнен. Перенаправляем к маршрутам...';
+      const existingProfile = readProfile();
+
+      if (isRegisterMode) {
+        if (existingProfile && existingProfile.email === emailValue) {
+          statusMessage.textContent = 'Профиль с таким e-mail уже есть. Попробуй войти.';
+          return;
+        }
+
+        const profile = {
+          id: `runspb-${Date.now()}`,
+          email: emailValue,
+          displayName: resolveDisplayName(),
+          createdAt: new Date().toISOString(),
+          lastLoginAt: new Date().toISOString(),
+          savedRoutes: existingProfile && Array.isArray(existingProfile.savedRoutes)
+            ? existingProfile.savedRoutes
+            : []
+        };
+
+        saveProfile(profile);
+        statusMessage.textContent = 'Аккаунт создан. Открываем профиль...';
+      } else {
+        if (!existingProfile || existingProfile.email !== emailValue) {
+          statusMessage.textContent = 'Профиль не найден. Сначала создай аккаунт.';
+          return;
+        }
+
+        existingProfile.lastLoginAt = new Date().toISOString();
+        saveProfile(existingProfile);
+        statusMessage.textContent = 'Вход выполнен. Открываем профиль...';
+      }
 
       setTimeout(() => {
-        window.location.href = '../Маршрут/index.html';
+        window.location.href = '../Профиль/profile.html';
       }, 900);
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        setMobileMenuState(false);
-      }
     });
 
     syncMode();

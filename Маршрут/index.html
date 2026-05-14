@@ -37,12 +37,12 @@
 
           <div class="filters-panel">
             <label class="search-field" for="route-search">
-              <span class="search-label">Поиск маршрута</span>
-              <input id="route-search" type="text" placeholder="Например: мосты, парк, 5 км">
+              <span class="search-label">Поиск по маршруту или станции метро</span>
+              <input id="route-search" type="text" placeholder="Например: Лесная">
             </label>
 
             <div class="filter-chip-list">
-              <button class="filter-chip is-active" type="button" data-filter-group="distance" data-filter-value="short">
+              <button class="filter-chip" type="button" data-filter-group="distance" data-filter-value="short">
                 Для начинающих
                 <img class="chip-icon" src="icon-close-small1.svg" alt="">
               </button>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="route-grid" id="route-grid">
-          <article class="route-card" data-name="Мосты Северной Венеции" data-distance="10" data-distance-group="long" data-location="Петроградская" data-tag="bridges coffee sunrise" data-level="Повышенная">
+          <article class="route-card" data-route-id="bridges-north-venice" data-name="Мосты Северной Венеции" data-distance="10" data-distance-group="long" data-location="Петроградская" data-metro="Петроградская Горьковская Спортивная" data-tag="bridges coffee sunrise" data-level="Повышенная">
             <img class="route-image" src="image-390.png" alt="Вид на мосты">
             <div class="route-body">
               <h3 class="route-name">Мосты Северной Венеции</h3>
@@ -79,12 +79,13 @@
                 <li>Дистанция: 10 км</li>
                 <li>Сложность: повышенная</li>
                 <li>Старт: Петроградская</li>
+                <li>Метро рядом: Петроградская, Горьковская</li>
               </ul>
               <button class="route-button" type="button">Подробнее</button>
             </div>
           </article>
 
-          <article class="route-card" data-name="Летний сад" data-distance="3.5" data-distance-group="short" data-location="Черная речка" data-tag="park coffee easy" data-level="Легко">
+          <article class="route-card" data-route-id="summer-garden" data-name="Летний сад" data-distance="3.5" data-distance-group="short" data-location="Пантелеймоновский мост" data-metro="Чернышевская Гостиный двор Невский проспект" data-tag="park coffee easy" data-level="Легко">
             <img class="route-image" src="image-400.png" alt="Аллея Летнего сада">
             <div class="route-body">
               <h3 class="route-name">Летний сад</h3>
@@ -92,13 +93,14 @@
               <ul class="route-meta">
                 <li>Дистанция: 3,5 км</li>
                 <li>Сложность: легко</li>
-                <li>Старт: Черная речка</li>
+                <li>Старт: Пантелеймоновский мост</li>
+                <li>Метро рядом: Чернышевская, Гостиный двор</li>
               </ul>
               <button class="route-button" type="button">Подробнее</button>
             </div>
           </article>
 
-          <article class="route-card" data-name="Griboedov: от Спаса до Фонтанки" data-distance="7" data-distance-group="medium" data-location="Невский проспект" data-tag="city bridges architecture" data-level="Средняя">
+          <article class="route-card" data-route-id="griboedov-route" data-name="Griboedov: от Спаса до Фонтанки" data-distance="7" data-distance-group="medium" data-location="Невский проспект" data-metro="Невский проспект Гостиный двор Сенная площадь" data-tag="city bridges architecture" data-level="Средняя">
             <img class="route-image" src="image-410.png" alt="Канал Грибоедова">
             <div class="route-body">
               <h3 class="route-name">Griboedov: от Спаса до Фонтанки</h3>
@@ -107,13 +109,15 @@
                 <li>Дистанция: 7 км</li>
                 <li>Сложность: средняя</li>
                 <li>Старт: Невский проспект</li>
+                <li>Метро рядом: Невский проспект, Гостиный двор</li>
               </ul>
               <button class="route-button" type="button">Подробнее</button>
             </div>
           </article>
         </div>
 
-        <p class="empty-state" id="empty-state" hidden>Под эти фильтры маршрут пока не найден. Попробуй снять один из чипов.</p>
+        <p class="results-state" id="results-state">Показано маршрутов: 3</p>
+        <p class="empty-state" id="empty-state" hidden>По вашему запросу ничего не найдено.</p>
       </section>
     </main>
 
@@ -145,11 +149,13 @@
       <h2 class="modal-title" id="route-modal-title">Маршрут</h2>
       <p class="modal-description" id="route-modal-description"></p>
       <ul class="modal-meta" id="route-modal-meta"></ul>
-      <a class="modal-action" href="../Страница входа/page2.html">Сохранить маршрут в профиль</a>
+      <button class="modal-action" id="save-route-button" type="button">Сохранить маршрут в профиль</button>
+      <a class="modal-secondary-action" href="../Профиль/profile.html">Открыть профиль</a>
     </section>
   </div>
 
   <script>
+    const PROFILE_STORAGE_KEY = 'runspb-user-profile';
     const burgerButton = document.querySelector('.burger-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const searchInput = document.getElementById('route-search');
@@ -157,6 +163,7 @@
     const sortButton = document.getElementById('sort-button');
     const routeGrid = document.getElementById('route-grid');
     const routeCards = Array.from(document.querySelectorAll('.route-card'));
+    const resultsState = document.getElementById('results-state');
     const emptyState = document.getElementById('empty-state');
     const modalOverlay = document.getElementById('modal-overlay');
     const routeModal = document.getElementById('route-modal');
@@ -164,8 +171,39 @@
     const modalTitle = document.getElementById('route-modal-title');
     const modalDescription = document.getElementById('route-modal-description');
     const modalMeta = document.getElementById('route-modal-meta');
+    const saveRouteButton = document.getElementById('save-route-button');
 
     let sortAscending = true;
+    let activeRouteCard = null;
+
+    function readProfile() {
+      try {
+        const rawProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+        return rawProfile ? JSON.parse(rawProfile) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function saveProfile(profile) {
+      localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+    }
+
+    function getResultsLabel(count, query) {
+      if (count === 0) {
+        return query
+          ? `По запросу «${query}» ничего не найдено`
+          : 'По вашему запросу ничего не найдено';
+      }
+
+      if (query) {
+        return count === 1
+          ? `По запросу «${query}» найден 1 маршрут`
+          : `По запросу «${query}» найдено маршрутов: ${count}`;
+      }
+
+      return `Показано маршрутов: ${count}`;
+    }
 
     function setMobileMenuState(isOpen) {
       burgerButton.setAttribute('aria-expanded', String(isOpen));
@@ -188,6 +226,7 @@
         const haystack = [
           card.dataset.name,
           card.dataset.location,
+          card.dataset.metro,
           card.dataset.tag,
           card.querySelector('.route-copy').textContent
         ].join(' ').toLowerCase();
@@ -208,7 +247,12 @@
         if (isVisible) visibleCount += 1;
       });
 
+      emptyState.textContent = query
+        ? 'По вашему запросу ничего не найдено.'
+        : 'Под такие фильтры маршруты пока не найдены.';
       emptyState.hidden = visibleCount !== 0;
+      resultsState.textContent = getResultsLabel(visibleCount, searchInput.value.trim());
+      resultsState.hidden = visibleCount === 0;
     }
 
     function sortRoutes() {
@@ -224,14 +268,22 @@
     }
 
     function openModal(card) {
+      activeRouteCard = card;
+      const profile = readProfile();
+      const savedRoutes = profile && Array.isArray(profile.savedRoutes) ? profile.savedRoutes : [];
+
       modalTitle.textContent = card.dataset.name;
       modalDescription.textContent = card.querySelector('.route-copy').textContent;
       modalMeta.innerHTML = '';
+      saveRouteButton.textContent = savedRoutes.some((route) => route.id === card.dataset.routeId)
+        ? 'Маршрут уже в профиле'
+        : 'Сохранить маршрут в профиль';
 
       [
         `Дистанция: ${card.dataset.distance} км`,
         `Сложность: ${card.dataset.level}`,
-        `Старт: ${card.dataset.location}`
+        `Старт: ${card.dataset.location}`,
+        `Метро рядом: ${card.dataset.metro}`
       ].forEach((text) => {
         const item = document.createElement('li');
         item.textContent = text;
@@ -245,10 +297,41 @@
     }
 
     function closeModal() {
+      activeRouteCard = null;
       routeModal.hidden = true;
       routeModal.setAttribute('aria-hidden', 'true');
       modalOverlay.hidden = true;
       document.body.classList.remove('modal-open');
+    }
+
+    function saveRouteToProfile() {
+      if (!activeRouteCard) {
+        return;
+      }
+
+      const profile = readProfile();
+      if (!profile) {
+        window.location.href = '../Страница входа/page2.html';
+        return;
+      }
+
+      const savedRoutes = Array.isArray(profile.savedRoutes) ? profile.savedRoutes : [];
+      const routeId = activeRouteCard.dataset.routeId;
+
+      if (!savedRoutes.some((route) => route.id === routeId)) {
+        savedRoutes.push({
+          id: routeId,
+          name: activeRouteCard.dataset.name,
+          distance: activeRouteCard.dataset.distance,
+          level: activeRouteCard.dataset.level,
+          location: activeRouteCard.dataset.location,
+          metro: activeRouteCard.dataset.metro
+        });
+      }
+
+      profile.savedRoutes = savedRoutes;
+      saveProfile(profile);
+      saveRouteButton.textContent = 'Маршрут сохранён';
     }
 
     searchInput.addEventListener('input', applyFilters);
@@ -268,6 +351,7 @@
 
     modalClose.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', closeModal);
+    saveRouteButton.addEventListener('click', saveRouteToProfile);
 
     burgerButton.addEventListener('click', () => {
       const isOpen = burgerButton.getAttribute('aria-expanded') === 'true';
