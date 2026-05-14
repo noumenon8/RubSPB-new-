@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>RunSPB - Вход</title>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand brand-header" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <button class="burger-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+        <img class="burger-icon" src="icon-burger0.svg" alt="">
+      </button>
+
+      <div class="mobile-menu" id="mobile-menu" hidden></div>
+    </header>
+
+    <main class="auth-layout">
+      <section class="art-panel">
+        <img class="art-image" src="d-6-ec-5-aa-9-da-169429-b-739022-c-63-e-79566-10.png" alt="Иллюстрация бегуна">
+      </section>
+
+      <section class="auth-card">
+        <button class="mode-link" type="button" id="mode-switch">Создать аккаунт</button>
+        <p class="auth-kicker">Профиль RunSPB</p>
+        <h1 class="auth-title" id="auth-title">Войти</h1>
+
+        <form class="auth-form" id="auth-form">
+          <label class="field">
+            <span class="field-label">E-mail / Номер телефона</span>
+            <input id="email-input" type="text" name="email" placeholder="runner@example.com" required>
+          </label>
+
+          <label class="field field-password">
+            <span class="field-label">Пароль</span>
+            <input id="password-input" type="password" name="password" placeholder="Минимум 6 символов" required minlength="6">
+            <button class="password-toggle" type="button" aria-label="Показать или скрыть пароль">
+              <img src="icon-password-hide0.svg" alt="">
+            </button>
+          </label>
+
+          <button class="forgot-link" type="button" id="forgot-button">Забыли пароль?</button>
+
+          <button class="submit-button" type="submit" id="submit-button">Вход</button>
+        </form>
+
+        <p class="status-message" id="status-message" aria-live="polite"></p>
+
+        <div class="helper-links">
+          <a class="helper-link" href="../Главная страница/page1.html">Вернуться на главную</a>
+          <a class="helper-link" href="../Маршрут/index.html">Смотреть маршруты</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <div class="footer-social">
+        <p class="footer-title">Мы в соц сетях</p>
+        <div class="social-icons">
+          <a class="social-link" href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <img src="_81-e-9125-dfe-9-fe-6161-ba-1-aa-96-c-4876288-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="VK">
+            <img src="f-74-dcd-9139-ebf-8-c-14-daf-235-cdf-026-c-7-c-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="image-10.png" alt="">
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const burgerButton = document.querySelector('.burger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const modeSwitch = document.getElementById('mode-switch');
+    const authTitle = document.getElementById('auth-title');
+    const submitButton = document.getElementById('submit-button');
+    const authForm = document.getElementById('auth-form');
+    const statusMessage = document.getElementById('status-message');
+    const passwordInput = document.getElementById('password-input');
+    const passwordToggle = document.querySelector('.password-toggle');
+    const forgotButton = document.getElementById('forgot-button');
+    const emailInput = document.getElementById('email-input');
+
+    let isRegisterMode = false;
+
+    function setMobileMenuState(isOpen) {
+      burgerButton.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.hidden = !isOpen;
+      mobileMenu.classList.toggle('is-open', isOpen);
+    }
+
+    function syncMode() {
+      authTitle.textContent = isRegisterMode ? 'Регистрация' : 'Войти';
+      submitButton.textContent = isRegisterMode ? 'Создать аккаунт' : 'Вход';
+      modeSwitch.textContent = isRegisterMode ? 'Уже есть аккаунт?' : 'Создать аккаунт';
+      forgotButton.hidden = isRegisterMode;
+      statusMessage.textContent = '';
+    }
+
+    modeSwitch.addEventListener('click', () => {
+      isRegisterMode = !isRegisterMode;
+      syncMode();
+    });
+
+    burgerButton.addEventListener('click', () => {
+      const isOpen = burgerButton.getAttribute('aria-expanded') === 'true';
+      setMobileMenuState(!isOpen);
+    });
+
+    passwordToggle.addEventListener('click', () => {
+      passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    });
+
+    forgotButton.addEventListener('click', () => {
+      statusMessage.textContent = 'Для демо-версии достаточно ввести любые корректные данные и войти заново.';
+    });
+
+    authForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!authForm.reportValidity()) {
+        return;
+      }
+
+      const emailValue = emailInput.value.trim();
+      if (emailValue.length < 3) {
+        statusMessage.textContent = 'Добавь e-mail или номер телефона.';
+        return;
+      }
+
+      statusMessage.textContent = isRegisterMode
+        ? 'Аккаунт создан. Перенаправляем к маршрутам...'
+        : 'Вход выполнен. Перенаправляем к маршрутам...';
+
+      setTimeout(() => {
+        window.location.href = '../Маршрут/index.html';
+      }, 900);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMobileMenuState(false);
+      }
+    });
+
+    syncMode();
+  </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>RunSPB - Маршруты</title>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand brand-header" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <button class="burger-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+        <img class="burger-icon" src="icon-burger0.svg" alt="">
+      </button>
+
+      <div class="mobile-menu" id="mobile-menu" hidden>
+        <a class="mobile-menu-link" href="../Главная страница/page1.html">Главная</a>
+        <a class="mobile-menu-link" href="../Страница входа/page2.html">Войти</a>
+        <a class="mobile-menu-link mobile-menu-link-primary" href="../Страница входа/page2.html">Регистрация</a>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="hero">
+        <div class="hero-card">
+          <p class="hero-kicker">Маршруты Санкт-Петербурга</p>
+          <h1 class="hero-title">Подбирай пробежку под темп, район и настроение</h1>
+          <p class="hero-text">
+            Собрали городские маршруты для утренних easy run, длинных тренировок и красивых пробежек по набережным.
+          </p>
+
+          <div class="filters-panel">
+            <label class="search-field" for="route-search">
+              <span class="search-label">Поиск маршрута</span>
+              <input id="route-search" type="text" placeholder="Например: мосты, парк, 5 км">
+            </label>
+
+            <div class="filter-chip-list">
+              <button class="filter-chip is-active" type="button" data-filter-group="distance" data-filter-value="short">
+                Для начинающих
+                <img class="chip-icon" src="icon-close-small1.svg" alt="">
+              </button>
+              <button class="filter-chip" type="button" data-filter-group="tag" data-filter-value="coffee">
+                По пути: парк, кофейня
+                <img class="chip-icon" src="icon-close-small0.svg" alt="">
+              </button>
+              <button class="sort-chip" type="button" id="sort-button">
+                Сначала короткие
+                <img class="sort-icon" src="icon-chevron-sort0.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="image-380.png" alt="Маршрут на карте Санкт-Петербурга">
+        </div>
+      </section>
+
+      <section class="routes-section" aria-labelledby="routes-title">
+        <div class="section-head">
+          <h2 class="section-title" id="routes-title">Лучшие маршруты</h2>
+          <a class="create-route-button" href="../Страница входа/page2.html">Создать свой маршрут</a>
+        </div>
+
+        <div class="route-grid" id="route-grid">
+          <article class="route-card" data-name="Мосты Северной Венеции" data-distance="10" data-distance-group="long" data-location="Петроградская" data-tag="bridges coffee sunrise" data-level="Повышенная">
+            <img class="route-image" src="image-390.png" alt="Вид на мосты">
+            <div class="route-body">
+              <h3 class="route-name">Мосты Северной Венеции</h3>
+              <p class="route-copy">Идеальный маршрут для бега с панорамами города, сменой рельефа и мостами как естественными интервалами.</p>
+              <ul class="route-meta">
+                <li>Дистанция: 10 км</li>
+                <li>Сложность: повышенная</li>
+                <li>Старт: Петроградская</li>
+              </ul>
+              <button class="route-button" type="button">Подробнее</button>
+            </div>
+          </article>
+
+          <article class="route-card" data-name="Летний сад" data-distance="3.5" data-distance-group="short" data-location="Черная речка" data-tag="park coffee easy" data-level="Легко">
+            <img class="route-image" src="image-400.png" alt="Аллея Летнего сада">
+            <div class="route-body">
+              <h3 class="route-name">Летний сад</h3>
+              <p class="route-copy">Ровные аллеи, тень деревьев и мягкий ритм пробежки, когда хочется бежать спокойно и красиво.</p>
+              <ul class="route-meta">
+                <li>Дистанция: 3,5 км</li>
+                <li>Сложность: легко</li>
+                <li>Старт: Черная речка</li>
+              </ul>
+              <button class="route-button" type="button">Подробнее</button>
+            </div>
+          </article>
+
+          <article class="route-card" data-name="Griboedov: от Спаса до Фонтанки" data-distance="7" data-distance-group="medium" data-location="Невский проспект" data-tag="city bridges architecture" data-level="Средняя">
+            <img class="route-image" src="image-410.png" alt="Канал Грибоедова">
+            <div class="route-body">
+              <h3 class="route-name">Griboedov: от Спаса до Фонтанки</h3>
+              <p class="route-copy">Динамичный городской бег вдоль канала, где почти на каждом повороте открывается новый архитектурный ракурс.</p>
+              <ul class="route-meta">
+                <li>Дистанция: 7 км</li>
+                <li>Сложность: средняя</li>
+                <li>Старт: Невский проспект</li>
+              </ul>
+              <button class="route-button" type="button">Подробнее</button>
+            </div>
+          </article>
+        </div>
+
+        <p class="empty-state" id="empty-state" hidden>Под эти фильтры маршрут пока не найден. Попробуй снять один из чипов.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <div class="footer-social">
+        <p class="footer-title">Мы в соц сетях</p>
+        <div class="social-icons">
+          <a class="social-link" href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <img src="_81-e-9125-dfe-9-fe-6161-ba-1-aa-96-c-4876288-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="VK">
+            <img src="f-74-dcd-9139-ebf-8-c-14-daf-235-cdf-026-c-7-c-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="image-10.png" alt="">
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-overlay" id="modal-overlay" hidden></div>
+    <section class="route-modal" id="route-modal" hidden aria-hidden="true" aria-labelledby="route-modal-title">
+      <button class="modal-close" type="button" aria-label="Закрыть окно">&times;</button>
+      <p class="modal-kicker">Детали маршрута</p>
+      <h2 class="modal-title" id="route-modal-title">Маршрут</h2>
+      <p class="modal-description" id="route-modal-description"></p>
+      <ul class="modal-meta" id="route-modal-meta"></ul>
+      <a class="modal-action" href="../Страница входа/page2.html">Сохранить маршрут в профиль</a>
+    </section>
+  </div>
+
+  <script>
+    const burgerButton = document.querySelector('.burger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const searchInput = document.getElementById('route-search');
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const sortButton = document.getElementById('sort-button');
+    const routeGrid = document.getElementById('route-grid');
+    const routeCards = Array.from(document.querySelectorAll('.route-card'));
+    const emptyState = document.getElementById('empty-state');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const routeModal = document.getElementById('route-modal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalTitle = document.getElementById('route-modal-title');
+    const modalDescription = document.getElementById('route-modal-description');
+    const modalMeta = document.getElementById('route-modal-meta');
+
+    let sortAscending = true;
+
+    function setMobileMenuState(isOpen) {
+      burgerButton.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.hidden = !isOpen;
+      mobileMenu.classList.toggle('is-open', isOpen);
+    }
+
+    function applyFilters() {
+      const query = searchInput.value.trim().toLowerCase();
+      const activeFilters = Array.from(filterChips)
+        .filter((chip) => chip.classList.contains('is-active'))
+        .map((chip) => ({
+          group: chip.dataset.filterGroup,
+          value: chip.dataset.filterValue
+        }));
+
+      let visibleCount = 0;
+
+      routeCards.forEach((card) => {
+        const haystack = [
+          card.dataset.name,
+          card.dataset.location,
+          card.dataset.tag,
+          card.querySelector('.route-copy').textContent
+        ].join(' ').toLowerCase();
+
+        const matchesQuery = !query || haystack.includes(query);
+        const matchesFilters = activeFilters.every((filter) => {
+          if (filter.group === 'distance') {
+            return card.dataset.distanceGroup === filter.value;
+          }
+          if (filter.group === 'tag') {
+            return card.dataset.tag.includes(filter.value);
+          }
+          return true;
+        });
+
+        const isVisible = matchesQuery && matchesFilters;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      emptyState.hidden = visibleCount !== 0;
+    }
+
+    function sortRoutes() {
+      const sortedCards = routeCards
+        .slice()
+        .sort((a, b) => sortAscending
+          ? Number(a.dataset.distance) - Number(b.dataset.distance)
+          : Number(b.dataset.distance) - Number(a.dataset.distance));
+
+      sortedCards.forEach((card) => routeGrid.appendChild(card));
+      sortButton.firstChild.textContent = sortAscending ? 'Сначала длинные ' : 'Сначала короткие ';
+      sortAscending = !sortAscending;
+    }
+
+    function openModal(card) {
+      modalTitle.textContent = card.dataset.name;
+      modalDescription.textContent = card.querySelector('.route-copy').textContent;
+      modalMeta.innerHTML = '';
+
+      [
+        `Дистанция: ${card.dataset.distance} км`,
+        `Сложность: ${card.dataset.level}`,
+        `Старт: ${card.dataset.location}`
+      ].forEach((text) => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        modalMeta.appendChild(item);
+      });
+
+      routeModal.hidden = false;
+      routeModal.setAttribute('aria-hidden', 'false');
+      modalOverlay.hidden = false;
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      routeModal.hidden = true;
+      routeModal.setAttribute('aria-hidden', 'true');
+      modalOverlay.hidden = true;
+      document.body.classList.remove('modal-open');
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+
+    filterChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chip.classList.toggle('is-active');
+        applyFilters();
+      });
+    });
+
+    sortButton.addEventListener('click', sortRoutes);
+
+    routeCards.forEach((card) => {
+      card.querySelector('.route-button').addEventListener('click', () => openModal(card));
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+
+    burgerButton.addEventListener('click', () => {
+      const isOpen = burgerButton.getAttribute('aria-expanded') === 'true';
+      setMobileMenuState(!isOpen);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileMenuState(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+        setMobileMenuState(false);
+      }
+    });
+
+    applyFilters();
+  </script>
+</body>
+</html>
+
+

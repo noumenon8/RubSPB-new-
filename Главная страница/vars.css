@@ -1,0 +1,98 @@
+
+
+/* Figma Styles of your File */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+@font-face {
+    font-family: 'IgraSans-Regular';
+    src: url('fonts/IgraSans-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'StampRspkOne-Bold';
+    src: url('fonts/StampRspkOne-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Wattauchimma-Regular';
+    src: url('fonts/Wattauchimma-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('fonts/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+:root {
+  /* Colors */
+  --black-100: #1a1c19;
+  --black-70: #575d68;
+  --black-50: #868b95;
+  --black-30: #b8b9c0;
+  --black-10: #e7e7e9;
+  --black-5: #f3f3f4;
+  --black-3: #f8f8f8;
+  --yellow-1: #ad9f07;
+  --yellow-2: #fdeb26;
+  --yellow-3: #f8e72e;
+  --yellow-4-main: #e3d10a;
+  --yellow-5: #eadc3b;
+  --yellow-6: #ddd479;
+  --yellow-7: #f4f0c7;
+  --system-error: #b21414;
+  --system-warning: #eb7200;
+  --system-success: #306918;
+
+  /* Fonts */
+  --h1-web-font-family: IgraSans-Regular, sans-serif;
+  --h1-web-font-size: 60px;
+  --h1-web-line-height: 60px;
+  --h1-web-font-weight: 400;
+  --h1-web-font-style: normal;
+  --h2-web-font-family: IgraSans-Regular, sans-serif;
+  --h2-web-font-size: 40px;
+  --h2-web-line-height: 44px;
+  --h2-web-font-weight: 400;
+  --h2-web-font-style: normal;
+  --h3-web-font-family: IgraSans-Regular, sans-serif;
+  --h3-web-font-size: 28px;
+  --h3-web-line-height: 36px;
+  --h3-web-font-weight: 400;
+  --h3-web-font-style: normal;
+  --text-large-web-font-family: Montserrat-SemiBold, sans-serif;
+  --text-large-web-font-size: 18px;
+  --text-large-web-line-height: 28px;
+  --text-large-web-font-weight: 600;
+  --text-large-web-font-style: normal;
+  --text-medium-web-font-family: Montserrat-Medium, sans-serif;
+  --text-medium-web-font-size: 16px;
+  --text-medium-web-line-height: 24px;
+  --text-medium-web-font-weight: 500;
+  --text-medium-web-font-style: normal;
+  --text-small-web-font-family: Montserrat-Regular, sans-serif;
+  --text-small-web-font-size: 14px;
+  --text-small-web-line-height: 20px;
+  --text-small-web-font-weight: 400;
+  --text-small-web-font-style: normal;
+
+  /* Effects */
+}
+/* Figma Color Variables of your File */
