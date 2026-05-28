@@ -46,13 +46,22 @@
         </span>
       </a>
 
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a class="profile-link" href="../Профиль/profile.html" aria-label="Профиль">
+          <span class="profile-icon" aria-hidden="true"></span>
+        </a>
+        <a class="auth-link login-button" href="../Страница входа/page2.html">Войти</a>
+        <a class="register-chip" href="../Страница входа/page2.html">Регистрация</a>
+      </nav>
+
       <button class="frame-3 burger-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
         <img class="icon-burger" src="icon-burger0.svg" alt="">
       </button>
 
       <div class="mobile-menu" id="mobile-menu" hidden>
-        <a class="mobile-menu-action" href="../Страница входа/page2.html">Войти</a>
-        <a class="mobile-menu-action mobile-menu-action-primary" href="../Страница входа/page2.html">Регистрация</a>
+        <a class="mobile-menu-link" href="#about-section">Главная</a>
+        <a class="mobile-menu-link" href="../Маршрут/index.html">Маршруты</a>
+        <a class="mobile-menu-link" href="../Мероприятия/index.html">Мероприятия</a>
       </div>
     </header>
 
@@ -60,7 +69,7 @@
     <img class="image-33" src="image-330.png" alt="Беговая тренировка на природе">
     <section class="hero-content" id="about-section">
       <h1 class="div2">Всё для бега в Санкт-Петербурге</h1>
-      <a class="button-primary-default interactive-button" href="../Маршрут/index.html">Изучить карту</a>
+      <a class="button-primary-default interactive-button" href="../Маршрут/index.html">Смотреть маршруты</a>
     </section>
 
     <section id="clubs-section" class="section-anchor" aria-labelledby="clubs-title">
@@ -74,7 +83,7 @@
     </section>
 
     <section id="events-section" class="section-anchor" aria-labelledby="events-title">
-      <h2 class="div4" id="events-title">Ближайшие события</h2>
+      <h2 class="div4" id="events-title">Мероприятия</h2>
       <button class="month-button month-december" type="button" data-month="may">Май</button>
       <button class="month-button month-january" type="button" data-month="june">Июнь</button>
       <button class="month-button month-february" type="button" data-month="july">Июль</button>
@@ -84,7 +93,7 @@
       <div class="event-details" aria-live="polite" hidden>
         <p class="event-month-label"></p>
         <p class="event-title"></p>
-        <p class="event-description"></p>
+        <ul class="event-description event-meta-list"></ul>
       </div>
     </section>
 
@@ -140,24 +149,42 @@
     const monthButtons = document.querySelectorAll('.month-button');
     const monthLabel = document.querySelector('.event-month-label');
     const eventTitle = document.querySelector('.event-title');
-    const eventDescription = document.querySelector('.event-description');
+    const eventMetaList = document.querySelector('.event-meta-list');
     const eventDetails = document.querySelector('.event-details');
 
     const monthContent = {
       may: {
         month: 'Май',
         title: 'Ночная пробежка по лесной тропе',
-        description: 'Спокойный темп, фонарики и короткий маршрут для знакомства с сообществом.'
+        meta: [
+          'Дата: 18 мая',
+          'Формат: групповая пробежка',
+          'Место: лесная тропа у Лесной',
+          'Дистанция: 5 км',
+          'Действие: прийти на старт и познакомиться с сообществом'
+        ]
       },
       june: {
         month: 'Июнь',
         title: 'Благотворительный марафон от издания',
-        description: 'Городской старт в поддержку доброй инициативы: открытая регистрация, несколько дистанций и большая общая встреча после финиша.'
+        meta: [
+          'Дата: 9 июня',
+          'Формат: городской старт',
+          'Место: центр Санкт-Петербурга',
+          'Дистанция: несколько дистанций на выбор',
+          'Действие: зарегистрироваться и выбрать дистанцию'
+        ]
       },
       july: {
         month: 'Июль',
         title: 'Кросс-бег на Лесной',
-        description: 'Летняя трасса по зелёному маршруту: пересечённые участки, бодрый темп и тренировка на выносливость в компании.'
+        meta: [
+          'Дата: 14 июля',
+          'Формат: кросс-бег',
+          'Место: зелёный маршрут у Лесной',
+          'Дистанция: 7 км',
+          'Действие: посмотреть детали и присоединиться к группе'
+        ]
       }
     };
 
@@ -211,7 +238,12 @@
         eventDetails.hidden = false;
         monthLabel.textContent = month.month;
         eventTitle.textContent = month.title;
-        eventDescription.textContent = month.description;
+        eventMetaList.innerHTML = '';
+        month.meta.forEach((itemText) => {
+          const item = document.createElement('li');
+          item.textContent = itemText;
+          eventMetaList.appendChild(item);
+        });
       });
     });
 

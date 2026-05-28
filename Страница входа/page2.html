@@ -14,6 +14,24 @@
       <a class="brand brand-header" href="../Главная страница/page1.html" aria-label="На главную">
         <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
       </a>
+
+      <nav class="desktop-nav" aria-label="&#1044;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1103; &#1087;&#1088;&#1086;&#1092;&#1080;&#1083;&#1103;">
+        <a class="profile-link" href="../%D0%9F%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C/profile.html" aria-label="&#1055;&#1088;&#1086;&#1092;&#1080;&#1083;&#1100;">
+          <span class="profile-icon" aria-hidden="true"></span>
+        </a>
+        <a class="auth-link login-button" href="./page2.html">&#1042;&#1086;&#1081;&#1090;&#1080;</a>
+        <a class="register-chip" href="./page2.html">&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1094;&#1080;&#1103;</a>
+      </nav>
+
+      <button class="burger-button" type="button" aria-label="&#1054;&#1090;&#1082;&#1088;&#1099;&#1090;&#1100; &#1084;&#1077;&#1085;&#1102;" aria-expanded="false" aria-controls="mobile-menu">
+        <img class="burger-icon" src="icon-burger0.svg" alt="">
+      </button>
+
+      <div class="mobile-menu" id="mobile-menu" hidden>
+        <a class="mobile-menu-link" href="../%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0/page1.html">&#1043;&#1083;&#1072;&#1074;&#1085;&#1072;&#1103;</a>
+        <a class="mobile-menu-link" href="../%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82/index.html">&#1052;&#1072;&#1088;&#1096;&#1088;&#1091;&#1090;&#1099;</a>
+        <a class="mobile-menu-link" href="../%D0%9C%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F/index.html">&#1052;&#1077;&#1088;&#1086;&#1087;&#1088;&#1080;&#1103;&#1090;&#1080;&#1103;</a>
+      </div>
     </header>
 
     <main class="auth-layout">
@@ -94,6 +112,8 @@
     const emailInput = document.getElementById('email-input');
     const nameField = document.getElementById('name-field');
     const nameInput = document.getElementById('name-input');
+    const burgerButton = document.querySelector('.burger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
     let isRegisterMode = false;
 
@@ -137,13 +157,34 @@
       statusMessage.textContent = '';
     }
 
+    function setMobileMenuState(isOpen) {
+      burgerButton.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.hidden = !isOpen;
+      mobileMenu.classList.toggle('is-open', isOpen);
+    }
+
     modeSwitch.addEventListener('click', () => {
       isRegisterMode = !isRegisterMode;
       syncMode();
     });
 
+    burgerButton.addEventListener('click', () => {
+      const isOpen = burgerButton.getAttribute('aria-expanded') === 'true';
+      setMobileMenuState(!isOpen);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileMenuState(false));
+    });
+
     passwordToggle.addEventListener('click', () => {
       passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMobileMenuState(false);
+      }
     });
 
     forgotButton.addEventListener('click', () => {

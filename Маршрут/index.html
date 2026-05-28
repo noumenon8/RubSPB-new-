@@ -15,14 +15,22 @@
         <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
       </a>
 
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a class="profile-link" href="../Профиль/profile.html" aria-label="Профиль">
+          <span class="profile-icon" aria-hidden="true"></span>
+        </a>
+        <a class="auth-link login-button" href="../Страница входа/page2.html">Войти</a>
+        <a class="register-chip" href="../Страница входа/page2.html">Регистрация</a>
+      </nav>
+
       <button class="burger-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
         <img class="burger-icon" src="icon-burger0.svg" alt="">
       </button>
 
       <div class="mobile-menu" id="mobile-menu" hidden>
         <a class="mobile-menu-link" href="../Главная страница/page1.html">Главная</a>
-        <a class="mobile-menu-link" href="../Страница входа/page2.html">Войти</a>
-        <a class="mobile-menu-link mobile-menu-link-primary" href="../Страница входа/page2.html">Регистрация</a>
+        <a class="mobile-menu-link" href="./index.html">Маршруты</a>
+        <a class="mobile-menu-link" href="../Мероприятия/index.html">Мероприятия</a>
       </div>
     </header>
 
@@ -65,51 +73,48 @@
 
       <section class="routes-section" aria-labelledby="routes-title">
         <div class="section-head">
-          <h2 class="section-title" id="routes-title">Лучшие маршруты</h2>
+          <h2 class="section-title" id="routes-title">Каталог маршрутов</h2>
           <a class="create-route-button" href="../Страница входа/page2.html">Создать свой маршрут</a>
         </div>
 
         <div class="route-grid" id="route-grid">
-          <article class="route-card" data-route-id="bridges-north-venice" data-name="Мосты Северной Венеции" data-distance="10" data-distance-group="long" data-location="Петроградская" data-metro="Петроградская Горьковская Спортивная" data-tag="bridges coffee sunrise" data-level="Повышенная">
+          <article class="route-card" data-route-id="bridges-north-venice" data-name="Мосты Северной Венеции" data-distance="10" data-distance-group="long" data-location="Петроградская" data-metro="Петроградская Горьковская Спортивная" data-tag="bridges coffee sunrise" data-level="Повышенная" data-modal-description="Маршрут для длинной городской тренировки: сначала спокойный разгон на Петроградской стороне, затем серия мостов и набережных с заметной сменой темпа." data-route-feel="Ритм: волнами, с короткими подъёмами на мосты и открытыми прямыми вдоль воды" data-cover="Покрытие: асфальт, гранитные набережные, несколько лестниц и оживлённых переходов" data-best-time="Лучшее время: раннее утро или вечер, когда меньше туристического потока" data-landmarks="Ориентиры: Биржевой мост, Стрелка Васильевского острова, Троицкий мост" data-profile-note="Длинный видовой маршрут для дней, когда хочется набрать объём и потренировать подъёмы. Удобнее выходить утром или вечером.">
             <img class="route-image" src="image-390.png" alt="Вид на мосты">
             <div class="route-body">
               <h3 class="route-name">Мосты Северной Венеции</h3>
-              <p class="route-copy">Идеальный маршрут для бега с панорамами города, сменой рельефа и мостами как естественными интервалами.</p>
+              <p class="route-copy">Длинная видовая петля по мостам и набережным, где город сам задаёт интервальный ритм.</p>
               <ul class="route-meta">
-                <li>Дистанция: 10 км</li>
-                <li>Сложность: повышенная</li>
                 <li>Старт: Петроградская</li>
-                <li>Метро рядом: Петроградская, Горьковская</li>
+                <li>Для: длинной тренировки</li>
+                <li>Фишка: подъёмы на мосты</li>
               </ul>
               <button class="route-button" type="button">Подробнее</button>
             </div>
           </article>
 
-          <article class="route-card" data-route-id="summer-garden" data-name="Летний сад" data-distance="3.5" data-distance-group="short" data-location="Пантелеймоновский мост" data-metro="Чернышевская Гостиный двор Невский проспект" data-tag="park coffee easy" data-level="Легко">
+          <article class="route-card" data-route-id="summer-garden" data-name="Летний сад" data-distance="3.5" data-distance-group="short" data-location="Пантелеймоновский мост" data-metro="Чернышевская Гостиный двор Невский проспект" data-tag="park coffee easy" data-level="Легко" data-modal-description="Короткий маршрут без лишней суеты: ровные аллеи помогают держать разговорный темп, а парк даёт тень и спокойный визуальный ритм." data-route-feel="Ритм: ровный easy run без резких ускорений" data-cover="Покрытие: парковые дорожки и асфальт вокруг сада" data-best-time="Лучшее время: утро в будний день или лёгкая восстановительная пробежка вечером" data-landmarks="Ориентиры: Пантелеймоновский мост, Михайловский замок, Марсово поле" data-profile-note="Короткий спокойный маршрут для восстановления, первой пробежки недели или разминки перед делами в центре.">
             <img class="route-image" src="image-400.png" alt="Аллея Летнего сада">
             <div class="route-body">
               <h3 class="route-name">Летний сад</h3>
-              <p class="route-copy">Ровные аллеи, тень деревьев и мягкий ритм пробежки, когда хочется бежать спокойно и красиво.</p>
+              <p class="route-copy">Спокойный круг через зелёный центр для лёгкого темпа, разминки или восстановления.</p>
               <ul class="route-meta">
-                <li>Дистанция: 3,5 км</li>
-                <li>Сложность: легко</li>
                 <li>Старт: Пантелеймоновский мост</li>
-                <li>Метро рядом: Чернышевская, Гостиный двор</li>
+                <li>Для: easy run</li>
+                <li>Фишка: тень и ровные аллеи</li>
               </ul>
               <button class="route-button" type="button">Подробнее</button>
             </div>
           </article>
 
-          <article class="route-card" data-route-id="griboedov-route" data-name="Griboedov: от Спаса до Фонтанки" data-distance="7" data-distance-group="medium" data-location="Невский проспект" data-metro="Невский проспект Гостиный двор Сенная площадь" data-tag="city bridges architecture" data-level="Средняя">
+          <article class="route-card" data-route-id="griboedov-route" data-name="Griboedov: от Спаса до Фонтанки" data-distance="7" data-distance-group="medium" data-location="Невский проспект" data-metro="Невский проспект Гостиный двор Сенная площадь" data-tag="city bridges architecture" data-level="Средняя" data-modal-description="Городской маршрут для тех, кому скучно бежать по прямой: канал постоянно меняет перспективу, а мостики и перекрёстки держат внимание." data-route-feel="Ритм: переменный, с частыми поворотами и короткими участками для ускорения" data-cover="Покрытие: асфальт, плитка у воды, несколько узких тротуаров" data-best-time="Лучшее время: до полудня или поздний вечер, когда центр свободнее" data-landmarks="Ориентиры: Спас на Крови, Казанский собор, Банковский мост, Фонтанка" data-profile-note="Средняя городская дистанция для бодрой пробежки по центру. Хороша, когда хочется архитектуры и смены картинки.">
             <img class="route-image" src="image-410.png" alt="Канал Грибоедова">
             <div class="route-body">
               <h3 class="route-name">Griboedov: от Спаса до Фонтанки</h3>
-              <p class="route-copy">Динамичный городской бег вдоль канала, где почти на каждом повороте открывается новый архитектурный ракурс.</p>
+              <p class="route-copy">Живой городской маршрут вдоль канала: много поворотов, мостиков и смены картинки.</p>
               <ul class="route-meta">
-                <li>Дистанция: 7 км</li>
-                <li>Сложность: средняя</li>
                 <li>Старт: Невский проспект</li>
-                <li>Метро рядом: Невский проспект, Гостиный двор</li>
+                <li>Для: темповой прогулки-бега</li>
+                <li>Фишка: архитектура у воды</li>
               </ul>
               <button class="route-button" type="button">Подробнее</button>
             </div>
@@ -273,18 +278,20 @@
       const savedRoutes = profile && Array.isArray(profile.savedRoutes) ? profile.savedRoutes : [];
 
       modalTitle.textContent = card.dataset.name;
-      modalDescription.textContent = card.querySelector('.route-copy').textContent;
+      modalDescription.textContent = card.dataset.modalDescription || card.querySelector('.route-copy').textContent;
       modalMeta.innerHTML = '';
       saveRouteButton.textContent = savedRoutes.some((route) => route.id === card.dataset.routeId)
         ? 'Маршрут уже в профиле'
         : 'Сохранить маршрут в профиль';
 
       [
-        `Дистанция: ${card.dataset.distance} км`,
-        `Сложность: ${card.dataset.level}`,
-        `Старт: ${card.dataset.location}`,
-        `Метро рядом: ${card.dataset.metro}`
-      ].forEach((text) => {
+        `Дистанция и сложность: ${card.dataset.distance} км, ${card.dataset.level.toLowerCase()}`,
+        `Старт и метро: ${card.dataset.location}; рядом ${card.dataset.metro}`,
+        card.dataset.routeFeel,
+        card.dataset.cover,
+        card.dataset.bestTime,
+        card.dataset.landmarks
+      ].filter(Boolean).forEach((text) => {
         const item = document.createElement('li');
         item.textContent = text;
         modalMeta.appendChild(item);
@@ -325,7 +332,9 @@
           distance: activeRouteCard.dataset.distance,
           level: activeRouteCard.dataset.level,
           location: activeRouteCard.dataset.location,
-          metro: activeRouteCard.dataset.metro
+          metro: activeRouteCard.dataset.metro,
+          note: activeRouteCard.dataset.profileNote,
+          bestTime: activeRouteCard.dataset.bestTime
         });
       }
 

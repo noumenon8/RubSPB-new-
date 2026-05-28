@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Маршрут/vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>RunSPB - Мероприятия</title>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand brand-header" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Действия профиля">
+        <a class="profile-link" href="../Профиль/profile.html" aria-label="Профиль">
+          <span class="profile-icon" aria-hidden="true"></span>
+        </a>
+        <a class="auth-link login-button" href="../Страница входа/page2.html">Войти</a>
+        <a class="register-chip" href="../Страница входа/page2.html">Регистрация</a>
+      </nav>
+
+      <button class="burger-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+        <img class="burger-icon" src="../Маршрут/icon-burger0.svg" alt="">
+      </button>
+
+      <div class="mobile-menu" id="mobile-menu" hidden>
+        <a class="mobile-menu-link" href="../Главная страница/page1.html">Главная</a>
+        <a class="mobile-menu-link" href="../Маршрут/index.html">Маршруты</a>
+        <a class="mobile-menu-link" href="./index.html">Мероприятия</a>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="hero">
+        <div class="hero-card">
+          <p class="hero-kicker">Календарь RunSPB</p>
+          <h1 class="hero-title">Беговые события, к которым хочется готовиться</h1>
+          <p class="hero-text">
+            Подбирай старты, открытые тренировки и встречи сообщества по формату, дистанции и настроению.
+          </p>
+          <a class="hero-action" href="#events-title">Смотреть события</a>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="../Главная страница/image-350.png" alt="Участники бегового события">
+        </div>
+      </section>
+
+      <section class="events-section" aria-labelledby="events-title">
+        <div class="section-head">
+          <h2 class="section-title" id="events-title">Ближайшие мероприятия</h2>
+          <p class="section-copy">Выбирай формат: спокойная встреча, городская тренировка или старт на дистанцию.</p>
+        </div>
+
+        <div class="filter-chip-list" aria-label="Фильтр мероприятий">
+          <button class="filter-chip is-active" type="button" data-filter-value="all">Все</button>
+          <button class="filter-chip" type="button" data-filter-value="training">Тренировки</button>
+          <button class="filter-chip" type="button" data-filter-value="race">Старты</button>
+          <button class="filter-chip" type="button" data-filter-value="community">Встречи</button>
+        </div>
+
+        <div class="event-grid" id="event-grid">
+          <article class="event-card" data-event-id="night-forest-run" data-type="training" data-title="Ночная пробежка по лесной тропе" data-date="18 мая" data-format="Групповая тренировка" data-place="Лесная тропа у Лесной" data-distance="5 км" data-level="Легко" data-details="Спокойный темп, фонарики, короткая дистанция и знакомство с беговым сообществом без соревновательного давления.">
+            <p class="event-month">Май</p>
+            <h3 class="event-title">Ночная пробежка по лесной тропе</h3>
+            <p class="event-copy">Мягкий вечерний формат для знакомства с группой и бегом вне асфальта.</p>
+            <ul class="event-meta">
+              <li>Дата: 18 мая</li>
+              <li>Формат: тренировка</li>
+              <li>Дистанция: 5 км</li>
+            </ul>
+            <button class="event-button" type="button">Подробнее</button>
+          </article>
+
+          <article class="event-card" data-event-id="charity-city-marathon" data-type="race" data-title="Благотворительный марафон от издания" data-date="9 июня" data-format="Городской старт" data-place="Центр Санкт-Петербурга" data-distance="5, 10 и 21 км" data-level="На выбор" data-details="Открытый городской старт в поддержку доброй инициативы: несколько дистанций, общий финишный сбор и понятная регистрация.">
+            <p class="event-month">Июнь</p>
+            <h3 class="event-title">Благотворительный марафон от издания</h3>
+            <p class="event-copy">Большой городской старт с дистанциями для разного уровня подготовки.</p>
+            <ul class="event-meta">
+              <li>Дата: 9 июня</li>
+              <li>Формат: старт</li>
+              <li>Дистанция: 5, 10 и 21 км</li>
+            </ul>
+            <button class="event-button" type="button">Подробнее</button>
+          </article>
+
+          <article class="event-card" data-event-id="lesnaya-cross" data-type="race" data-title="Кросс-бег на Лесной" data-date="14 июля" data-format="Кросс-бег" data-place="Зелёный маршрут у Лесной" data-distance="7 км" data-level="Средняя" data-details="Летняя трасса с пересечёнными участками, бодрым темпом и тренировкой на выносливость в компании.">
+            <p class="event-month">Июль</p>
+            <h3 class="event-title">Кросс-бег на Лесной</h3>
+            <p class="event-copy">Зелёная трасса для тех, кому хочется сменить ровный асфальт на рельеф.</p>
+            <ul class="event-meta">
+              <li>Дата: 14 июля</li>
+              <li>Формат: старт</li>
+              <li>Дистанция: 7 км</li>
+            </ul>
+            <button class="event-button" type="button">Подробнее</button>
+          </article>
+
+          <article class="event-card" data-event-id="summer-garden-easy" data-type="community" data-title="Easy run у Летнего сада" data-date="27 июля" data-format="Встреча сообщества" data-place="Пантелеймоновский мост" data-distance="3,5 км" data-level="Легко" data-details="Короткая пробежка в разговорном темпе, после которой группа остаётся на кофе и обсуждает маршруты на август.">
+            <p class="event-month">Июль</p>
+            <h3 class="event-title">Easy run у Летнего сада</h3>
+            <p class="event-copy">Короткая встреча для тех, кто хочет бежать спокойно и не в одиночку.</p>
+            <ul class="event-meta">
+              <li>Дата: 27 июля</li>
+              <li>Формат: встреча</li>
+              <li>Дистанция: 3,5 км</li>
+            </ul>
+            <button class="event-button" type="button">Подробнее</button>
+          </article>
+        </div>
+
+        <p class="empty-state" id="empty-state" hidden>Под этот фильтр мероприятий пока нет.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="../Главная страница/page1.html" aria-label="На главную">
+        <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
+      </a>
+
+      <div class="footer-social">
+        <p class="footer-title">Мы в соц сетях</p>
+        <div class="social-icons">
+          <a class="social-link" href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <img src="../Маршрут/_81-e-9125-dfe-9-fe-6161-ba-1-aa-96-c-4876288-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="VK">
+            <img src="../Маршрут/f-74-dcd-9139-ebf-8-c-14-daf-235-cdf-026-c-7-c-10.png" alt="">
+          </a>
+          <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="../Маршрут/image-10.png" alt="">
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-overlay" id="modal-overlay" hidden></div>
+    <section class="event-modal" id="event-modal" hidden aria-hidden="true" aria-labelledby="event-modal-title">
+      <button class="modal-close" type="button" aria-label="Закрыть окно">&times;</button>
+      <p class="modal-kicker">Детали мероприятия</p>
+      <h2 class="modal-title" id="event-modal-title">Мероприятие</h2>
+      <p class="modal-description" id="event-modal-description"></p>
+      <ul class="modal-meta" id="event-modal-meta"></ul>
+      <button class="modal-action" id="join-event-button" type="button">Участвовать</button>
+      <a class="modal-secondary-action" href="../Профиль/profile.html">Открыть профиль</a>
+    </section>
+  </div>
+
+  <script>
+    const PROFILE_STORAGE_KEY = 'runspb-user-profile';
+    const burgerButton = document.querySelector('.burger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const eventCards = Array.from(document.querySelectorAll('.event-card'));
+    const emptyState = document.getElementById('empty-state');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const eventModal = document.getElementById('event-modal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalTitle = document.getElementById('event-modal-title');
+    const modalDescription = document.getElementById('event-modal-description');
+    const modalMeta = document.getElementById('event-modal-meta');
+    const joinEventButton = document.getElementById('join-event-button');
+
+    let activeEventCard = null;
+
+    function readProfile() {
+      try {
+        const rawProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+        return rawProfile ? JSON.parse(rawProfile) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function saveProfile(profile) {
+      localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+    }
+
+    function setMobileMenuState(isOpen) {
+      burgerButton.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.hidden = !isOpen;
+      mobileMenu.classList.toggle('is-open', isOpen);
+    }
+
+    function applyFilter(value) {
+      let visibleCount = 0;
+
+      eventCards.forEach((card) => {
+        const isVisible = value === 'all' || card.dataset.type === value;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      emptyState.hidden = visibleCount !== 0;
+    }
+
+    function openModal(card) {
+      activeEventCard = card;
+      const profile = readProfile();
+      const savedEvents = profile && Array.isArray(profile.savedEvents) ? profile.savedEvents : [];
+
+      modalTitle.textContent = card.dataset.title;
+      modalDescription.textContent = card.dataset.details;
+      modalMeta.innerHTML = '';
+      joinEventButton.textContent = savedEvents.some((event) => event.id === card.dataset.eventId)
+        ? 'Мероприятие уже в профиле'
+        : 'Участвовать';
+
+      [
+        `Дата: ${card.dataset.date}`,
+        `Формат: ${card.dataset.format}`,
+        `Место: ${card.dataset.place}`,
+        `Дистанция: ${card.dataset.distance}`,
+        `Сложность: ${card.dataset.level}`
+      ].forEach((text) => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        modalMeta.appendChild(item);
+      });
+
+      eventModal.hidden = false;
+      eventModal.setAttribute('aria-hidden', 'false');
+      modalOverlay.hidden = false;
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      activeEventCard = null;
+      eventModal.hidden = true;
+      eventModal.setAttribute('aria-hidden', 'true');
+      modalOverlay.hidden = true;
+      document.body.classList.remove('modal-open');
+    }
+
+    function joinEvent() {
+      if (!activeEventCard) {
+        return;
+      }
+
+      const profile = readProfile();
+      if (!profile) {
+        window.location.href = '../Страница входа/page2.html';
+        return;
+      }
+
+      const savedEvents = Array.isArray(profile.savedEvents) ? profile.savedEvents : [];
+      const eventId = activeEventCard.dataset.eventId;
+
+      if (!savedEvents.some((event) => event.id === eventId)) {
+        savedEvents.push({
+          id: eventId,
+          title: activeEventCard.dataset.title,
+          date: activeEventCard.dataset.date,
+          format: activeEventCard.dataset.format,
+          place: activeEventCard.dataset.place,
+          distance: activeEventCard.dataset.distance
+        });
+      }
+
+      profile.savedEvents = savedEvents;
+      saveProfile(profile);
+      joinEventButton.textContent = 'Мероприятие сохранено';
+    }
+
+    burgerButton.addEventListener('click', () => {
+      const isOpen = burgerButton.getAttribute('aria-expanded') === 'true';
+      setMobileMenuState(!isOpen);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileMenuState(false));
+    });
+
+    filterChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach((item) => item.classList.remove('is-active'));
+        chip.classList.add('is-active');
+        applyFilter(chip.dataset.filterValue);
+      });
+    });
+
+    eventCards.forEach((card) => {
+      card.querySelector('.event-button').addEventListener('click', () => openModal(card));
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+    joinEventButton.addEventListener('click', joinEvent);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+        setMobileMenuState(false);
+      }
+    });
+  </script>
+</body>
+</html>

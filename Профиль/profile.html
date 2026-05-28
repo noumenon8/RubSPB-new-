@@ -15,14 +15,28 @@
         <span class="brand-run">Run</span><span class="brand-spb">SPB</span>
       </a>
 
-      <div class="header-actions">
-        <a class="header-link" href="../Маршрут/index.html">Маршруты</a>
+      <nav class="desktop-nav" aria-label="&#1044;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1103; &#1087;&#1088;&#1086;&#1092;&#1080;&#1083;&#1103;">
+        <a class="profile-link" href="./profile.html" aria-label="&#1055;&#1088;&#1086;&#1092;&#1080;&#1083;&#1100;">
+          <span class="profile-icon" aria-hidden="true"></span>
+        </a>
+        <a class="auth-link login-button" href="../%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%20%D0%B2%D1%85%D0%BE%D0%B4%D0%B0/page2.html">&#1042;&#1086;&#1081;&#1090;&#1080;</a>
+        <a class="register-chip" href="../%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%20%D0%B2%D1%85%D0%BE%D0%B4%D0%B0/page2.html">&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1094;&#1080;&#1103;</a>
         <button class="header-link header-link-button" id="logout-button" type="button">Выйти</button>
+      </nav>
+
+      <button class="burger-button" type="button" aria-label="&#1054;&#1090;&#1082;&#1088;&#1099;&#1090;&#1100; &#1084;&#1077;&#1085;&#1102;" aria-expanded="false" aria-controls="mobile-menu">
+        <img class="burger-icon" src="../%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82/icon-burger0.svg" alt="">
+      </button>
+
+      <div class="mobile-menu" id="mobile-menu" hidden>
+        <a class="mobile-menu-link" href="../%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0/page1.html">&#1043;&#1083;&#1072;&#1074;&#1085;&#1072;&#1103;</a>
+        <a class="mobile-menu-link" href="../%D0%9C%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82/index.html">&#1052;&#1072;&#1088;&#1096;&#1088;&#1091;&#1090;&#1099;</a>
+        <a class="mobile-menu-link" href="../%D0%9C%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F/index.html">&#1052;&#1077;&#1088;&#1086;&#1087;&#1088;&#1080;&#1103;&#1090;&#1080;&#1103;</a>
       </div>
     </header>
 
     <main class="page-content">
-      <section class="profile-hero">
+      <section class="profile-hero" aria-label="&#1044;&#1072;&#1085;&#1085;&#1099;&#1077; &#1087;&#1088;&#1086;&#1092;&#1080;&#1083;&#1103;">
         <div class="profile-card">
           <p class="profile-kicker">Личный кабинет</p>
           <h1 class="profile-title" id="profile-name">Профиль RunSPB</h1>
@@ -54,6 +68,15 @@
 
         <div class="saved-routes-grid" id="saved-routes-grid"></div>
         <p class="empty-state" id="saved-routes-empty" hidden>Пока ничего не сохранено. Открой маршруты и добавь первый забег в профиль.</p>
+      </section>
+      <section class="saved-routes-section" aria-labelledby="profile-events-title">
+        <div class="section-head">
+          <h2 class="section-title" id="profile-events-title">&#1052;&#1086;&#1080; &#1084;&#1077;&#1088;&#1086;&#1087;&#1088;&#1080;&#1103;&#1090;&#1080;&#1103;</h2>
+          <p class="section-copy">&#1057;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103;, &#1085;&#1072; &#1082;&#1086;&#1090;&#1086;&#1088;&#1099;&#1077; &#1090;&#1099; &#1079;&#1072;&#1087;&#1080;&#1096;&#1077;&#1096;&#1100;&#1089;&#1103;, &#1073;&#1091;&#1076;&#1091;&#1090; &#1089;&#1086;&#1073;&#1088;&#1072;&#1085;&#1099; &#1074; &#1101;&#1090;&#1086;&#1084; &#1088;&#1072;&#1079;&#1076;&#1077;&#1083;&#1077;.</p>
+        </div>
+
+        <div class="saved-routes-grid" id="saved-events-grid"></div>
+        <p class="empty-state" id="saved-events-empty">&#1055;&#1086;&#1082;&#1072; &#1085;&#1077;&#1090; &#1079;&#1072;&#1087;&#1080;&#1089;&#1080; &#1085;&#1072; &#1084;&#1077;&#1088;&#1086;&#1087;&#1088;&#1080;&#1103;&#1090;&#1080;&#1103;. &#1054;&#1090;&#1082;&#1088;&#1086;&#1081; &#1088;&#1072;&#1079;&#1076;&#1077;&#1083; &#171;&#1052;&#1077;&#1088;&#1086;&#1087;&#1088;&#1080;&#1103;&#1090;&#1080;&#1103;&#187; &#1080; &#1074;&#1099;&#1073;&#1077;&#1088;&#1080; &#1089;&#1090;&#1072;&#1088;&#1090;.</p>
       </section>
     </main>
 
@@ -87,7 +110,11 @@
     const profileLastLogin = document.getElementById('profile-last-login');
     const savedRoutesGrid = document.getElementById('saved-routes-grid');
     const savedRoutesEmpty = document.getElementById('saved-routes-empty');
+    const savedEventsGrid = document.getElementById('saved-events-grid');
+    const savedEventsEmpty = document.getElementById('saved-events-empty');
     const logoutButton = document.getElementById('logout-button');
+    const burgerButton = document.querySelector('.burger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
     function readProfile() {
       try {
@@ -131,7 +158,47 @@
             <li>Сложность: ${route.level}</li>
           </ul>
         `;
+        const savedRouteCopy = card.querySelector('.saved-route-copy');
+        const savedRouteMeta = card.querySelector('.saved-route-meta');
+
+        savedRouteCopy.textContent = route.note || `Старт: ${route.location}. Метро рядом: ${route.metro}.`;
+
+        if (route.bestTime) {
+          const startItem = document.createElement('li');
+          startItem.textContent = `Старт: ${route.location}`;
+          savedRouteMeta.appendChild(startItem);
+
+          const timingItem = document.createElement('li');
+          timingItem.textContent = route.bestTime;
+          savedRouteMeta.appendChild(timingItem);
+        }
+
         savedRoutesGrid.appendChild(card);
+      });
+    }
+
+    function renderSavedEvents(events) {
+      savedEventsGrid.innerHTML = '';
+
+      if (!events.length) {
+        savedEventsEmpty.hidden = false;
+        return;
+      }
+
+      savedEventsEmpty.hidden = true;
+
+      events.forEach((event) => {
+        const card = document.createElement('article');
+        card.className = 'saved-route-card';
+        card.innerHTML = `
+          <h3 class="saved-route-title">${event.title}</h3>
+          <p class="saved-route-copy">${event.format}. ${event.place}.</p>
+          <ul class="saved-route-meta">
+            <li>Дата: ${event.date}</li>
+            <li>Дистанция: ${event.distance}</li>
+          </ul>
+        `;
+        savedEventsGrid.appendChild(card);
       });
     }
 
@@ -147,11 +214,33 @@
       profileCreatedAt.textContent = formatDate(profile.createdAt);
       profileLastLogin.textContent = formatDate(profile.lastLoginAt);
       renderSavedRoutes(Array.isArray(profile.savedRoutes) ? profile.savedRoutes : []);
+      renderSavedEvents(Array.isArray(profile.savedEvents) ? profile.savedEvents : []);
     }
 
     logoutButton.addEventListener('click', () => {
       localStorage.removeItem(PROFILE_STORAGE_KEY);
       window.location.href = '../Страница входа/page2.html';
+    });
+
+    function setMobileMenuState(isOpen) {
+      burgerButton.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.hidden = !isOpen;
+      mobileMenu.classList.toggle('is-open', isOpen);
+    }
+
+    burgerButton.addEventListener('click', () => {
+      const isOpen = burgerButton.getAttribute('aria-expanded') === 'true';
+      setMobileMenuState(!isOpen);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileMenuState(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMobileMenuState(false);
+      }
     });
 
     renderProfile();
