@@ -210,6 +210,11 @@ button {
   background: rgba(227, 209, 10, 0.15);
 }
 
+.mobile-menu-link-primary {
+  background: #e3d10a;
+  color: #1a1c19;
+}
+
 .page-content {
   margin-top: 48px;
   display: grid;

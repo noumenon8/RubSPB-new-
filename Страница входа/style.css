@@ -229,6 +229,11 @@ button {
   background: rgba(227, 209, 10, 0.15);
 }
 
+.mobile-menu-link-primary {
+  background: #e3d10a;
+  color: #1a1c19;
+}
+
 .auth-layout {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
