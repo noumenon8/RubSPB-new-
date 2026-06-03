@@ -58,11 +58,12 @@ body {
 .button-primary-default {
   background: var(--yellow-4-main, #e3d10a);
   border-radius: 8px;
-  padding: 12px 32px 12px 32px;
+  padding: 12px 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  width: max-content;
+  min-width: 236px;
   height: 52px;
   position: absolute;
   left: 860px;
@@ -74,6 +75,7 @@ body {
   cursor: pointer;
   color: var(--black-100, #1a1c19);
   text-align: center;
+  white-space: nowrap;
   font-family: var(
     --text-large-web-font-family,
     "Montserrat-SemiBold",
@@ -1114,7 +1116,7 @@ body {
 }
 @media (max-width: 1680px) {
   .frame-3 {
-    left: calc(1490px + var(--page-offset));
+    left: calc(1520px + var(--page-offset));
   }
 
   .mobile-menu {
@@ -1140,7 +1142,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: min(100%, 1240px);
     min-height: 54px;
   }
 
@@ -1396,7 +1398,7 @@ body {
 
   .frame-3 {
     display: block;
-    left: calc(100% - 120px);
+    left: auto;
   }
 }
 
@@ -1548,7 +1550,8 @@ body {
 
   .button-primary-default {
     display: inline-flex;
-    width: 100%;
+    width: max-content;
+    max-width: 100%;
     margin-top: 18px;
     left: auto;
     top: auto;
