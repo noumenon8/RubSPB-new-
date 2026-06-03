@@ -785,14 +785,16 @@ body {
   line-height: 36px;
   color: #ffffff;
 }
-.event-title-link {
-  color: inherit;
+.event-title .event-title-link,
+.event-title .event-title-link:visited,
+.event-title .event-title-link:active {
+  color: #ffffff;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
-.event-title-link:hover,
-.event-title-link:focus-visible {
+.event-title .event-title-link:hover,
+.event-title .event-title-link:focus-visible {
   color: #e3d10a;
   border-color: currentColor;
   outline: none;
