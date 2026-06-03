@@ -64,7 +64,7 @@
           <label class="field field-password">
             <span class="field-label">Пароль</span>
             <input id="password-input" type="password" name="password" placeholder="Минимум 6 символов" required minlength="6">
-            <button class="password-toggle" type="button" aria-label="Показать или скрыть пароль">
+            <button class="password-toggle" type="button" aria-label="Показать пароль" aria-pressed="false" data-show-src="icon-password-show0.svg" data-hide-src="icon-password-hide0.svg">
               <img src="icon-password-hide0.svg" alt="">
             </button>
           </label>
@@ -169,6 +169,14 @@
       mobileMenu.classList.toggle('is-open', isOpen);
     }
 
+    function syncPasswordToggle() {
+      const isPasswordVisible = passwordInput.type === 'text';
+      const passwordToggleIcon = passwordToggle.querySelector('img');
+      passwordToggleIcon.src = isPasswordVisible ? passwordToggle.dataset.showSrc : passwordToggle.dataset.hideSrc;
+      passwordToggle.setAttribute('aria-label', isPasswordVisible ? 'Скрыть пароль' : 'Показать пароль');
+      passwordToggle.setAttribute('aria-pressed', String(isPasswordVisible));
+    }
+
     modeSwitch.addEventListener('click', () => {
       isRegisterMode = !isRegisterMode;
       syncMode();
@@ -185,6 +193,7 @@
 
     passwordToggle.addEventListener('click', () => {
       passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+      syncPasswordToggle();
     });
 
     document.addEventListener('keydown', (event) => {
@@ -248,6 +257,7 @@
     });
 
     syncMode();
+    syncPasswordToggle();
   </script>
 </body>
 </html>

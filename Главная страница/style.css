@@ -729,6 +729,9 @@ body {
   border-radius: 4px;
   color: #000000;
   text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(
     --text-medium-web-font-family,
     "Montserrat-Medium",
@@ -737,8 +740,9 @@ body {
   font-size: var(--text-medium-web-font-size, 16px);
   line-height: var(--text-medium-web-line-height, 24px);
   font-weight: var(--text-medium-web-font-weight, 500);
-  width: 110px;
+  min-width: 114px;
   height: 24px;
+  padding: 0 14px;
   position: absolute;
   left: 1410px;
   top: 29px;
@@ -934,6 +938,8 @@ body {
 .mobile-menu-action-primary {
   background: #e3d10a;
   color: #000000;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 .modal-open {
   overflow: hidden;
