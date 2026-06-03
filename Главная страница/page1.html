@@ -162,6 +162,7 @@
       may: {
         month: 'Май',
         title: 'Ночная пробежка по лесной тропе',
+        eventId: 'night-forest-run',
         meta: [
           'Дата: 18 мая',
           'Формат: групповая пробежка',
@@ -173,6 +174,7 @@
       june: {
         month: 'Июнь',
         title: 'Благотворительный марафон от издания',
+        eventId: 'charity-city-marathon',
         meta: [
           'Дата: 9 июня',
           'Формат: городской старт',
@@ -184,6 +186,7 @@
       july: {
         month: 'Июль',
         title: 'Кросс-бег на Лесной',
+        eventId: 'lesnaya-cross',
         meta: [
           'Дата: 14 июля',
           'Формат: кросс-бег',
@@ -243,7 +246,12 @@
         button.classList.add('is-active');
         eventDetails.hidden = false;
         monthLabel.textContent = month.month;
-        eventTitle.textContent = month.title;
+        eventTitle.innerHTML = '';
+        const eventLink = document.createElement('a');
+        eventLink.href = `../Мероприятия/index.html#${month.eventId}`;
+        eventLink.textContent = month.title;
+        eventLink.className = 'event-title-link';
+        eventTitle.appendChild(eventLink);
         eventMetaList.innerHTML = '';
         month.meta.forEach((itemText) => {
           const item = document.createElement('li');
